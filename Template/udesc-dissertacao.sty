@@ -1,0 +1,374 @@
+%%
+%% Customizações do abnTeX2 (http://abnTeX2.googlecode.com) para a UDESC - Universidade do Estado de Santa Catarina
+%%
+%% This work may be distributed and/or modified under the
+%% conditions of the LaTeX Project Public License, either version 1.3
+%% of this license or (at your option) any later version.
+%% The latest version of this license is in
+%%   http://www.latex-project.org/lppl.txt
+%% and version 1.3 or later is part of all distributions of LaTeX
+%% version 2005/12/01 or later.
+%%
+%% This work has the LPPL maintenance status `maintained'.
+%% 
+%% The Current Maintainer of this work is Rafael Alceste Berri, rafaelberri@gmail.com
+%%
+%% Further information about abnTeX2 are available on http://abntex2.googlecode.com/
+%%
+
+% ---
+% INICIO DAS CUSTOMIZACOES PARA A UDESC - Universidade do Estado de Santa Catarina
+% ---
+
+% ---
+% PACOTES
+% ---
+\usepackage{cmap}				% Mapear caracteres especiais no PDF
+\usepackage{lmodern}			% Usa a fonte Latin Modern			
+\usepackage[T1]{fontenc}		% Selecao de codigos de fonte.
+%\usepackage[latin1]{inputenc}		% Codificacao do documento (conversão automática dos acentos)
+\usepackage[utf8]{inputenc}		% Codificacao do documento (conversão automática dos acentos)
+\usepackage{lastpage}			% Usado pela Ficha catalográfica
+\usepackage{indentfirst}		% Indenta o primeiro parágrafo de cada seção.
+\usepackage{color}				% Controle das cores
+\usepackage{xcolor}
+\usepackage{graphicx}			% Inclusão de gráficos
+\usepackage{float}
+\usepackage{subfig}
+\usepackage{rotating}
+\usepackage{multicol}
+\usepackage{multirow}
+\usepackage{circuitikz} %[symbols]
+\usepackage{tikz}
+\usetikzlibrary{shapes,arrows}
+\usepackage{booktabs}
+\usepackage{colortbl}
+
+
+\RequirePackage[a5paper,inner=2.5cm,outer=1.5cm,top=2.0cm,bottom=1.5cm,head=0.7cm,foot=0.7cm]{geometry}
+
+\chapterstyle{ell}
+
+\usepackage{caption}
+%\captionsetup{font=small,labelsep=endash}
+
+%\chapterstyle{reparticle}
+
+% \usepackage{color,calc,graphicx,soul}
+% \definecolor{nicered}{rgb}{.128,.128,.128}
+% \makeatletter
+% \newlength\dlf@normtxtw
+% \setlength\dlf@normtxtw{\textwidth}
+% \def\myhelvetfont{\def\sfdefault{mdput}}
+% \newsavebox{\feline@chapter}
+% \newcommand\feline@chapter@marker[1][4cm]{%
+% \sbox\feline@chapter{%
+% \resizebox{!}{#1}{\fboxsep=1pt%
+% \colorbox{nicered}{\color{white}\bfseries\sffamily\thechapter}%
+% }}%
+% \rotatebox{90}{%
+% \resizebox{%
+% \heightof{\usebox{\feline@chapter}}+\depthof{\usebox{\feline@chapter}}}%
+% {!}{\scshape\so\@chapapp}}\quad%
+% \raisebox{\depthof{\usebox{\feline@chapter}}}{\usebox{\feline@chapter}}%
+% }
+% \newcommand\feline@chm[1][4cm]{%
+% \sbox\feline@chapter{\feline@chapter@marker[#1]}%
+% \makebox[0pt][l]{% aka \rlap
+% \makebox[0cm][r]{\usebox\feline@chapter}%
+% }}
+% \makechapterstyle{daleif1}{
+% \renewcommand\chapnamefont{\normalfont\Large\scshape\raggedleft\so}
+% \renewcommand\chaptitlefont{\normalfont\huge\bfseries\scshape\color{nicered}}
+% \renewcommand\chapternamenum{}
+% \renewcommand\printchaptername{}
+% \renewcommand\printchapternum{\null\hfill\feline@chm[2.5cm]\par}
+% \renewcommand\afterchapternum{\par\vskip\midchapskip}
+% \renewcommand\printchaptertitle[1]{\chaptitlefont\raggedleft ##1\par}
+% }
+% \makeatother
+% \chapterstyle{daleif1}
+
+
+
+
+% ---
+% Pacotes de citações
+% ---
+%\usepackage[brazilian,hyperpageref]{backref}	 % Paginas com as citações na bibl
+\usepackage[alf,abnt-url-package=url, abnt-etal-list=0]{abntex2cite} % Citações padrão ABNT
+% ---
+
+% ---
+% Pacote para algoritmos
+% ---
+\DeclareUnicodeCharacter{F8}{\o} % declaração para correção de bug do algorithm
+
+\usepackage{algpseudocode}
+\usepackage{algorithm}
+%\usepackage[portugues]{algorithm2e}
+% Declaracoes em Português
+\algrenewcommand\algorithmicforall{\textbf{para cada}}
+\algrenewcommand\algorithmicend{\textbf{fim}}
+\algrenewcommand\algorithmicdo{\textbf{faça}}
+\algrenewcommand\algorithmicwhile{\textbf{enquanto}}
+\algrenewcommand\algorithmicfor{\textbf{para}}
+\algrenewcommand\algorithmicif{\textbf{se}}
+\algrenewcommand\algorithmicthen{\textbf{então}}
+\algrenewcommand\algorithmicelse{\textbf{senão}}
+\algrenewcommand\algorithmicreturn{\textbf{devolve}}
+\algrenewcommand\algorithmicfunction{\textbf{função}}
+\algblockdefx[NAME]{Estrutura}{EstruturaFim}%
+    [1]{\textbf{Estrutura} #1:}%
+    {\textbf{fim estrutura}}
+
+% Rearranja os finais de cada estrutura
+\algrenewtext{EndWhile}{\algorithmicend\ \algorithmicwhile}
+\algrenewtext{EndFor}{\algorithmicend\ \algorithmicfor}
+\algrenewtext{EndIf}{\algorithmicend\ \algorithmicif}
+\algrenewtext{EndFunction}{\algorithmicend\ \algorithmicfunction}
+
+% O comando For, a seguir, retorna 'para #1 -- #2 até #3 faça'
+\algnewcommand\algorithmicto{\textbf{até}}
+\algrenewtext{For}[3]%
+{\algorithmicfor\ #1 $\gets$ #2 \algorithmicto\ #3 \algorithmicdo}
+
+\floatname{algorithm}{Algoritmo}
+\renewcommand{\listalgorithmname}{Lista de algoritmos}
+\newcommand{\cftalgorithmname}{\algorithmname\space} 
+\newcommand{\listaalgoritmos}{
+	\pdfbookmark[0]{\listalgorithmname}{loa}
+	\thispagestyle{empty}
+	\pagestyle{empty}
+	\listofalgorithms
+	\cleardoublepage
+}
+
+% ---
+
+% ---
+% Configurações de aparência do PDF final
+
+% alterando o aspecto da cor azul
+%\definecolor{blue}{RGB}{41,5,195}
+\definecolor{blue}{RGB}{0,0,0}
+% ---
+
+%---
+% eleminando separação do fbox
+\setlength{\fboxsep}{0cm}
+% ---
+
+% --- fluxograma estilo
+% Define the layers to draw the diagram
+\pgfdeclarelayer{background}
+\pgfdeclarelayer{foreground}
+\pgfsetlayers{background,main,foreground}
+% Define block styles
+\tikzstyle{decision} = [diamond, draw, fill=blue!10, text width=4.5em, text badly centered, inner sep=0pt]
+\tikzstyle{block} = [rectangle, draw, thick, fill=blue!10, text width=5em, text centered, rounded corners, minimum height=1em]
+\tikzstyle{line} = [draw, -latex']
+\tikzstyle{cloud} = [ellipse, draw, fill=red!10, text centered, minimum height=1em]
+\newcommand{\background}[5]{%
+  \begin{pgfonlayer}{background}
+    % Left-top corner of the background rectangle
+    \path (#1.west |- #2.north)+(-0.5,0.25) node (a1) {};
+    % Right-bottom corner of the background rectanle
+    \path (#3.east |- #4.south)+(+0.5,-0.25) node (a2) {};
+    % Draw the background
+    \path[fill=yellow!10,rounded corners, draw=black!50, dashed]
+      (a1) rectangle (a2);
+    %\path (a1.east |- a1.south)+(0.8,-0.3) node (u1)[texto]
+    \path (a1.east |- a1.south)+(0.1,-0.005) node (u1)[texto]
+      {\scriptsize\textit{#5}};
+  \end{pgfonlayer}}
+% ---
+
+% ---
+% Configurações do parágrafo
+% O tamanho do parágrafo é dado por:
+\setlength{\parindent}{1.25cm}
+% Controle do espaçamento entre um parágrafo e outro:
+\setlength{\parskip}{0cm}  % tente também \onelineskip
+%\setlength{\parskip}{0.2cm}  % tente também \onelineskip
+% Espaçamento simples
+\SingleSpacing
+% ---
+
+
+%----------------------------------------------------------------------
+% Comandos criados pelo usuário
+\newcommand{\afazer}[1]{{\color{red}{#1}}} % Para destacar uma parte a ser trabalhada
+
+% declaracao das fontes
+\newcommand{\fonteprod}[1][produção do próprio autor] {
+\begin{flushleft}
+%\vspace{-0.5cm}
+Fonte: \ifthenelse{\equal{#1}{}}{produção do próprio autor}{#1}.
+\end{flushleft}
+}
+
+
+% alterando a capa
+\renewcommand{\imprimircapa}{%
+  \begin{capa}%
+    %\center
+    ~\\
+    \hspace*{-0.2cm}\makebox[\textwidth+0.2cm][l]{\includegraphics[width=2.26cm]{./imagens/styUDESC_logo.pdf}}
+    \parbox[t]{\textwidth}{\imprimirinstituicao}
+    
+    \vfill
+
+    \hspace*{1.4cm}
+    \begingroup\setlength{\fboxsep}{0pt}
+    \colorbox{black!50!green!90}{
+    \begin{tabular}{m{0.2cm} m{8.3cm} m{0.3cm}}
+     & & \\
+    \multicolumn{1}{m{0.2cm} !{\color{white}\vrule}}{ } & \color{white} \small{\MakeUppercase{Dissertação de Mestrado}} \normalcolor \par \vspace*{\onelineskip} \color{white} \large\MakeUppercase{\textbf{\imprimirtitulo}}  \normalcolor &  \\
+     & & 
+    \end{tabular} 
+    }
+    
+    \begin{center}
+    \vfill
+    \large\textbf{\MakeUppercase{\imprimirautor}} \par
+    \vspace*{2cm}
+    {\large\textbf{\MakeUppercase{\imprimirlocal , \imprimirdata}}}
+    \end{center}
+    
+    ~\\
+  \end{capa}
+}
+
+\renewcommand{\folhaderostocontent}{
+  \begin{center}
+
+    %\vspace*{1cm}
+    {\ABNTEXchapterfont\large\textbf{\MakeUppercase{\imprimirautor}}}
+	
+    \vspace*{\fill}\vspace*{\fill}
+    \begin{center}
+      \ABNTEXchapterfont\bfseries\Large\imprimirtitulo
+    \end{center}
+    \vspace*{\fill}
+	
+    \abntex@ifnotempty{\imprimirpreambulo}{%
+      \hspace{.45\textwidth}
+      \begin{minipage}{.5\textwidth}
+      	\SingleSpacing
+         \imprimirpreambulo\par
+        \texttt{   }\par
+        {\imprimirorientadorRotulo~\imprimirorientador\par}
+	\abntex@ifnotempty{\imprimircoorientador}{%
+	  {\imprimircoorientadorRotulo~\imprimircoorientador}%
+	}
+       \end{minipage}%
+       \vspace*{\fill}
+    }%
+
+%     {\abntex@ifnotempty{\imprimirinstituicao}{\imprimirinstituicao\vspace*{\fill}}}
+% 
+%     {\large\imprimirorientadorRotulo~\imprimirorientador\par}
+%     \abntex@ifnotempty{\imprimircoorientador}{%
+%        {\large\imprimircoorientadorRotulo~\imprimircoorientador}%
+%     }%
+    \vspace*{\fill}
+
+    {\large\textbf{\MakeUppercase{\imprimirlocal , \estado}}}
+    \par
+    {\large\imprimirdata}
+    \vspace*{1cm}
+
+  \end{center}
+}
+
+%\renewcommand{\imprimircapa}{%
+%   \begin{capa}%
+%     \left\includegraphics[width=2.26cm]{./imagens/styUDESC_logo.pdf}
+%     
+%     \ABNTEXchapterfont\large\imprimirautor
+% 
+%     \vfill
+%     \ABNTEXchapterfont\bfseries\LARGE\imprimirtitulo
+%     \vfill
+%     
+%     \large{\imprimirlocal, \imprimirdata}
+%     
+%     \vspace*{1cm}
+%   \end{capa}
+%   \begin{capa}%
+%     \thispagestyle{empty}
+%     \noindent\includegraphics[width=2.26cm]{./imagens/styUDESC_logo.pdf}
+%     
+%     \vfill
+%     \ABNTEXchapterfont\Large{\instituicao}
+%     \vfill
+%     
+%     \vspace*{1cm}
+%     
+%     {\ABNTEXchapterfont\large\imprimirautor}
+% 
+%     \vfill
+%     \ABNTEXchapterfont\bfseries\LARGE\imprimirtitulo
+%     \vfill
+%     
+%     \large{\imprimirlocal, \imprimirdata}
+%     
+%     \vspace*{1cm}
+%   \end{capa}
+%}
+
+
+% folha de rosto 
+
+\makeatletter
+
+% \renewcommand{\folhaderostocontent}{
+% \begin{center}
+% {\ABNTEXchapterfont\Large UNIVERSIDADE QUE TORNA OS DOCUMENTOS AINDA MAIS ESTRANHOS}
+%     
+%     \vspace*{1cm}
+%     
+% {\ABNTEXchapterfont\large\imprimirautor}
+% 
+% \vspace*{\fill}\vspace*{\fill}
+% 
+% \begin{center}
+% \ABNTEXchapterfont\bfseries\Large\imprimirtitulo
+% \end{center}
+% 
+% \vspace*{\fill}
+% 
+% \abntex@ifnotempty{\imprimirpreambulo}{%
+%   \hspace{.45\textwidth}
+%   \begin{minipage}{.5\textwidth}
+%   \SingleSpacing
+%   \imprimirpreambulo
+%   \end{minipage}%
+%   \vspace*{\fill}
+% }%
+% 
+% {\large\imprimirorientadorRotulo~\imprimirorientador\par}
+% 
+% \abntex@ifnotempty{\imprimircoorientador}{%
+%   {\large\imprimircoorientadorRotulo~\imprimircoorientador}%
+% }%
+% 
+% \vspace*{\fill}
+% 
+% {\abntex@ifnotempty{\imprimirinstituicao}{\imprimirinstituicao\vspace*{\fill}}}
+% 
+% {\large\imprimirlocal}
+% 
+% \par
+% 
+% {\large\imprimirdata}
+% \vspace*{1cm}
+% \end{center}
+% }
+
+\makeatother
+
+% ---
+% FIM DAS CUSTOMIZACOES PARA A UDESC - Universidade do Estado de Santa Catarina
+% ---

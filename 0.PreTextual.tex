@@ -1,0 +1,39 @@
+
+% \pretextual
+
+% ---
+% Capa
+% ---
+%\imprimircapa
+% ---
+
+% ---
+% Folha de rosto
+% (o * indica que haverá a ficha bibliográfica)
+% ---
+\imprimirfolhaderosto*
+% ---
+
+\input{./PreTextual/1.Ficha_catalografica}
+%\input{./PreTextual/2.Errata}
+\input{./PreTextual/3.Assinaturas}
+%falta uma pagina em branco
+%\newpage\null\thispagestyle{empty}\newpage
+
+\input{./PreTextual/4.Dedicatoria}
+
+
+\input{./PreTextual/5.Agradecimentos}
+\input{./PreTextual/6.Epigrafe}
+\input{./PreTextual/7.Resumo_pt}
+\input{./PreTextual/8.Resumo_en}
+%falta uma pagina em branco
+\input{./PreTextual/9.Listas_Siglas}
+
+% ---
+% Sumario
+% ---
+\pdfbookmark[0]{\contentsname}{toc}
+\tableofcontents*
+\cleardoublepage
+% ---
