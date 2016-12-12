@@ -25,4 +25,4 @@ Para facilitar, todas as páginas de definições estão em "Pré-textual", assi
 
 Coloque todas as referências em X.Referencias.
 
-Os anexos utilizam o mesmo conceito do Pré-Textualm, ou seja, basta usar comando input e colocar os textso na pasta Apêndice.
+Os anexos utilizam o mesmo conceito do Pré-Textual, ou seja, basta usar comando input e colocar os textso na pasta Apêndice.
